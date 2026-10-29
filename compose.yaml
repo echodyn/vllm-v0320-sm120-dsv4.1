@@ -1,0 +1,77 @@
+name: vllm-dsv41-sm120-online
+services:
+  vllm:
+    build:
+      context: .
+      args:
+        BASE_IMAGE: ${BASE_IMAGE:-vllm/vllm-openai:v0.32.0}
+        PYPI_MIRROR: ${PYPI_MIRROR:-official}
+        PYPI_INDEX_URL: ${PYPI_INDEX_URL:-}
+        GITHUB_PROXY_URL: ${GITHUB_PROXY_URL:-}
+        KERNEL_WHEEL_BASE_URL: ${KERNEL_WHEEL_BASE_URL:-}
+    image: vllm:v0.32.0-sm120-dsv41-online
+    container_name: vllm-dsv41-sm120-online
+    ipc: host
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ["0", "1", "2", "3"]
+              capabilities: [gpu]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${MODEL_PATH:?Set MODEL_PATH to the local DeepSeek-V4.1-Flash directory}:/models/dsv41-flash:ro
+    environment:
+      HF_HUB_OFFLINE: "1"
+      VLLM_USE_V2_MODEL_RUNNER: "1"
+    entrypoint: ["vllm", "serve"]
+    command:
+      - /models/dsv41-flash
+      - --served-model-name
+      - dsv41-flash-1017
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8000"
+      - --tensor-parallel-size
+      - "4"
+      - --enable-expert-parallel
+      - --disable-custom-all-reduce
+      - --moe-backend
+      - deep_gemm
+      - --kv-cache-dtype
+      - fp8
+      - --block-size
+      - "64"
+      - --attention-config
+      - '{"indexer_kv_dtype":"fp8"}'
+      - --engram-config
+      - '{"cpu_offload":true}'
+      - --speculative-config
+      - '{"method":"dspark","num_speculative_tokens":5,"enable_adaptive_verification":false}'
+      - --compilation-config
+      - '{"cudagraph_mode":"FULL_AND_PIECEWISE"}'
+      - --kernel-config
+      - '{"enable_flashinfer_autotune":true}'
+      - --max-model-len
+      - "524288"
+      - --max-num-batched-tokens
+      - "16384"
+      - --max-num-seqs
+      - "48"
+      - --gpu-memory-utilization
+      - "0.94"
+      - --tokenizer-mode
+      - deepseek_v41
+      - --reasoning-parser
+      - deepseek_v41
+      - --tool-call-parser
+      - deepseek_v41
+      - --enable-auto-tool-choice
+      - --enable-prefix-caching
+      - --trust-remote-code

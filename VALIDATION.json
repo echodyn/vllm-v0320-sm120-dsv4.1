@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-29",
+  "variant": "online-build source distribution",
+  "baseline": {
+    "image": "vllm/vllm-openai:v0.32.0",
+    "cuda": "13.0",
+    "source_commit": "5df63a7203cdb9328d824a27b682e77c7b9928be",
+    "offline_startup": "reported successful by the operator; not independently rerun for this online variant",
+    "gpu_memory_utilization": "0.94"
+  },
+  "source_verification": {
+    "patches": 14,
+    "modified_python_files": 25,
+    "source_git_blob_and_sha256": "passed",
+    "patch_and_result_hashes": "passed",
+    "check_does_not_write": "passed",
+    "idempotence": "passed",
+    "syntax": "passed",
+    "dependency_lock_sha256": "e0ef4d005a9887119c57f9f434399b3e40f121d2f89ba9fd5f6b1a28f171f9fc"
+  },
+  "cpu_tests": {
+    "entrypoint": "scripts/verify_backports.py",
+    "source_mode": "local pinned pristine vLLM package supplied with --source-root",
+    "require_torch": true,
+    "run": 74,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "offline_baseline_tests_retained": 66,
+    "additional_online_tests": 8
+  },
+  "test_environment": {
+    "os": "Darwin",
+    "architecture": "arm64",
+    "python": "3.12.9",
+    "torch": "2.7.1"
+  },
+  "online_download_tests": {
+    "loopback_http_only": true,
+    "real_curl_transfers": true,
+    "runtime_python_and_architecture_detection": "passed",
+    "unsupported_runtime_and_conflicting_flags": "passed",
+    "fresh_cache_without_host_wheels": "passed",
+    "valid_cache_without_network": "passed",
+    "interrupted_transfer_http_range_resume": "passed",
+    "failed_transfer_retains_partial": "passed",
+    "corrupt_cache_rejected_before_download": "passed",
+    "pypi_index_and_flashinfer_directory_precedence": "passed"
+  },
+  "static_checks": {
+    "compose_runtime_equivalent_to_offline": "passed, including gpu-memory-utilization=0.94",
+    "online_image_project_container_names": "distinct from offline",
+    "compose_download_arguments": "passed: official/tuna/aliyun/custom-index/proxy/kernel-directory",
+    "ruff_F821_F811_F401_F841": "passed",
+    "python_format": "passed"
+  },
+  "not_executed": [
+    "complete online Docker image build",
+    "container startup for the online variant",
+    "CUDA kernel numerical tests",
+    "512K admission",
+    "48 concurrent serving requests",
+    "accuracy or throughput benchmarks"
+  ]
+}

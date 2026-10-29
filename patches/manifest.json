@@ -1,0 +1,441 @@
+{
+  "schema": 1,
+  "reviewed_at": "2026-10-28",
+  "baseline": {
+    "repository": "vllm-project/vllm",
+    "tag": "v0.32.0",
+    "commit": "5df63a7203cdb9328d824a27b682e77c7b9928be",
+    "image": "vllm/vllm-openai:v0.32.0",
+    "source_prefix": "vllm/"
+  },
+  "dependencies": {
+    "flashinfer-python": "0.7.2",
+    "flashinfer-cubin": "0.7.2",
+    "flashinfer-jit-cache": "0.7.2+cu130",
+    "flashinfer_source_commit": "d84335d8c54e0c8f9f7e22faa15c7e34a58abf94",
+    "deepgemm_source_commit": "1e1842a833699298f7afc02eefb2ed168fff6938"
+  },
+  "backports": [
+    {
+      "number": 60762,
+      "url": "https://github.com/vllm-project/vllm/pull/60762",
+      "title": "[Bugfix][DSv4.1] Declare 64-token kernel blocks for SM120 sparse backends",
+      "state": "open",
+      "merged": false,
+      "head_commit": "48dcffbb7c8ff690ac60ae6c8b06ca0601d05e73",
+      "base_commit": "36f5ff3172eb75433e54e496d64c473e951f8ecc",
+      "merge_commit": null,
+      "updated_at": "2026-10-28T01:14:25Z",
+      "patch": "001-60762.patch",
+      "patch_sha256": "195b1283f559519915fcf084b1b2b76c0d7df1106b84267819550b904145a6b7",
+      "adaptation_notes": "Only the SM12x indexer and FlashInfer sparse declarations become [64]; the unreachable FlashMLA base and the independent SWA/compressor layout stay unchanged.",
+      "head_repository": "xzwgit/vllm",
+      "upstream_patch_sha256": "3f397b07e2d24c052d7d865bb75bce4d1bd1efa6a06678825d2ca96c7d179469",
+      "github_test_merge_commit": "70fe2440cd41a781052ba1b8813a25c7f15f4b1e"
+    },
+    {
+      "number": 57292,
+      "url": "https://github.com/vllm-project/vllm/pull/57292",
+      "title": "[Bugfix][DSv4.1] Fail fast on SM120 when FlashInfer lacks runtime page sizes",
+      "state": "open",
+      "merged": false,
+      "head_commit": "05781bbadf3a944aeb3d6b5866c3231ca0a6f107",
+      "base_commit": "1a86733c7b02f1cd5b035e64b9af5ce23e726484",
+      "merge_commit": null,
+      "updated_at": "2026-10-06T12:55:00Z",
+      "patch": "002-57292.patch",
+      "patch_sha256": "21c94c960ecbcd94ccf643a3d773cad4d6fe1b6d39222b3dd6e8a67d756d27e2",
+      "adaptation_notes": "Probe the public runtime page-size capability before constructing SM120 attention. Keep the baseline V4-format FP8 record.",
+      "head_repository": "luoyuctl/vllm",
+      "upstream_patch_sha256": "6e913b5d4f5b12176d637091e4515df9a31d8283ce79dab5313415329dde5a6c",
+      "github_test_merge_commit": "2be4ba825891041e6f6c1d1b63af5b567c3d4fc7"
+    },
+    {
+      "number": 55264,
+      "url": "https://github.com/vllm-project/vllm/pull/55264",
+      "title": "[Bugfix][SM120] Scope sparse MLA warmup autotuning to attention",
+      "state": "open",
+      "merged": false,
+      "head_commit": "4e3972317d28442485bbfede87e84db0abc54ca3",
+      "base_commit": "ce49c47cbb241b59a32ef110079a5261dbd08e49",
+      "merge_commit": null,
+      "updated_at": "2026-10-27T17:02:27Z",
+      "patch": "003-55264.patch",
+      "patch_sha256": "ae76a4c67e0da279a47de462a2c3323f5a78d5cc57b876bf18d2d6c53c42804e",
+      "adaptation_notes": "Backport scoped sparse-call tuning, per-rank calibration, bounded capture-bucket refinement and configured skip-ops to the legacy v0.32.0 cache. Do not import the later managed-cache migration. Use V2 dummy-run arguments for a single-request runner.",
+      "head_repository": "lucifer1004/vllm",
+      "upstream_patch_sha256": "53deccc900772baa42982c2d0621eb7cd90ede79869ea265e6edaf711417e87b",
+      "github_test_merge_commit": "e00ba79fee659632068990f046828454a8262bcc"
+    },
+    {
+      "number": 63473,
+      "url": "https://github.com/vllm-project/vllm/pull/63473",
+      "title": "[Bugfix][MoE] Refuse flashinfer_cutlass MoE on SM120/SM121: silently corrupt output",
+      "state": "open",
+      "merged": false,
+      "head_commit": "319b6b1365090505c30b7f1b57b0507a4820ac2e",
+      "base_commit": "36f5ff3172eb75433e54e496d64c473e951f8ecc",
+      "merge_commit": null,
+      "updated_at": "2026-10-28T01:00:57Z",
+      "patch": "004-63473.patch",
+      "patch_sha256": "ce7b7bf2908908cbf53ab65a21f9a5daa9b69190981c089911578afc542ad797",
+      "adaptation_notes": "Reject only the exact SM120 MXFP8-activation FlashInfer CUTLASS MoE combination. Preserve SM121, other activation types and the NVFP4 subclasses.",
+      "head_repository": "xzwgit/vllm",
+      "upstream_patch_sha256": "f8e70938854573b258435989878765a0d28b3d2c1fe3e32c3beacbd54b0cefc8",
+      "github_test_merge_commit": "0dce812e0a115384e2b8621aec4157ab97868e9e"
+    },
+    {
+      "number": 63533,
+      "url": "https://github.com/vllm-project/vllm/pull/63533",
+      "title": "[Bugfix][MoE] Dynamic per-group BLOCK_M for SM120 DeepGEMM contiguous-grouped MoE",
+      "state": "open",
+      "merged": false,
+      "head_commit": "fd643b44b3d2ba9e5ac89a3624a8a72bc51ce8d0",
+      "base_commit": "36f5ff3172eb75433e54e496d64c473e951f8ecc",
+      "merge_commit": null,
+      "updated_at": "2026-10-27T23:45:40Z",
+      "patch": "005-63533.patch",
+      "patch_sha256": "e2d9ec9da3c4efefe94306f3137843312ccae09e176b9c4cda2cab6764b7f6a1",
+      "adaptation_notes": "Cap small per-expert M alignment at 64 consistently in permutation, both expert apply paths and warmup. Retain the base DeepGEMM 1e1842a native extension and its per-call alignment scope.",
+      "head_repository": "xzwgit/vllm",
+      "upstream_patch_sha256": "3a24231c331869fc9a2318f55b55c3dd563992693c79d2ad4e01268cc3d77c51",
+      "github_test_merge_commit": "05786a2b2f0de14513f2fce51b875daa75fff522"
+    },
+    {
+      "number": 59986,
+      "url": "https://github.com/vllm-project/vllm/pull/59986",
+      "title": "[Bugfix][Attention] Keep DSV4.1 sparse prefill out of FULL cudagraphs",
+      "state": "closed",
+      "merged": true,
+      "head_commit": "8dc913310de07f557b43b135e2746b5c5fe7f54a",
+      "base_commit": "6fe3d447ac6429ef13aff117744d0298e28879ed",
+      "merge_commit": "8977b13a1c38ece61034ccb8916e76064f348919",
+      "updated_at": "2026-10-27T08:07:31Z",
+      "patch": "006-59986.patch",
+      "patch_sha256": "b016e13005aae906fe7f81d87b3d63f217a0e8f0cd4eac800b23971fc24fd88e",
+      "adaptation_notes": "All five DSv4.1 builders report UNIFORM_BATCH plus the existing max_decode_query_len bound. Adapt imports to the older class locations.",
+      "head_repository": "he-yufeng/vllm",
+      "upstream_patch_sha256": "7d761bbb1dd06ae27dd630fca368568cad3cd0423d31bbd0669d2719406e12f0"
+    },
+    {
+      "number": 62769,
+      "url": "https://github.com/vllm-project/vllm/pull/62769",
+      "title": "[Bugfix][Spec Decode] Synchronize adaptive DSpark decisions across TP ranks",
+      "state": "open",
+      "merged": false,
+      "head_commit": "6b4758109451ece0e7b58a7af3824fa31c1c0f3d",
+      "base_commit": "612e928016e2cfe28da95fc03ed894aceaf18299",
+      "merge_commit": null,
+      "updated_at": "2026-10-27T11:33:27Z",
+      "patch": "007-62769.patch",
+      "patch_sha256": "e3ed011fd245aec4d2af791205f4fc60785924613c876ab5e8d5e758c8d6d14c",
+      "adaptation_notes": "Broadcast the host draft budget and, only when trimming, device capacities. Prefer the existing PyNCCL communicator and preserve its disabled fallback.",
+      "head_repository": "okorzh-amd/vllm",
+      "upstream_patch_sha256": "bcb9ca2afcb66a2ddb8c1949054cd8bae2dd43d96078c3988941cbd388cf0d37",
+      "github_test_merge_commit": "34348bf35d7c89b7797b0851b1d48dd4465d9c83"
+    },
+    {
+      "number": 63155,
+      "url": "https://github.com/vllm-project/vllm/pull/63155",
+      "title": "[Perf][DSv4.1] Capture the decoder replay graphs on the model graphs' stream",
+      "state": "closed",
+      "merged": true,
+      "head_commit": "c91b1d28cf7272cf8943b4796abb46cf5a837a42",
+      "base_commit": "43111fd1f0c3135ff671e25e2e85238aa05743d0",
+      "merge_commit": "274a5e19a18460ed41d47117398494b721e3df16",
+      "updated_at": "2026-10-27T20:45:58Z",
+      "patch": "008-63155.patch",
+      "patch_sha256": "06b58ef342376f1b38b0b52dd07c3de541d8fe089a07fac7863a4009ee2ef817",
+      "adaptation_notes": "Pass an optional capture stream through MRV2 and NVIDIA replay capture. Keep separate capture when early auxiliary hidden states remain live. Later specialized-decode files do not exist in the base; AMD changes are excluded.",
+      "head_repository": "xqoasis/vllm",
+      "upstream_patch_sha256": "adf822114de6def86f46ead4865896ea18da3f6602f99afc2b67514925205d92"
+    },
+    {
+      "number": 60613,
+      "url": "https://github.com/vllm-project/vllm/pull/60613",
+      "title": "[Bugfix][DSv4.1] Seed the -1 sentinel in the prefill sparse index workspace",
+      "state": "closed",
+      "merged": true,
+      "head_commit": "d2cc5943c69c85998c8e21832508521718bd9d27",
+      "base_commit": "0510bd66795683d41f0dcdbcb374bfbd6e91595f",
+      "merge_commit": "9bd5c2a0582d747c2550425286a585111e74b65b",
+      "updated_at": "2026-10-23T08:55:47Z",
+      "patch": "009-60613.patch",
+      "patch_sha256": "a2ff67b06e1e915769b9ba325607efadf34505329243983ec7573b8058b056f5",
+      "adaptation_notes": "Seed caller-owned combine_topk_swa_indices output with -1 before the kernel writes valid prefixes.",
+      "head_repository": "xqoasis/vllm",
+      "upstream_patch_sha256": "f04987429b587af918b91f735c1af543b89c74b59c86f4ec657eefb13996e158"
+    },
+    {
+      "number": 60874,
+      "url": "https://github.com/vllm-project/vllm/pull/60874",
+      "title": "[Perf][DSv4.1] Size the long-context prefill workspaces by what a chunk can use",
+      "state": "open",
+      "merged": false,
+      "head_commit": "fe1a30812d3451953ed578290667e069774d74df",
+      "base_commit": "86b1c2ef159dcc268d219b074cb047340ea718aa",
+      "merge_commit": null,
+      "updated_at": "2026-10-27T17:21:57Z",
+      "patch": "010-60874.patch",
+      "patch_sha256": "c74e511e7b651959a1f25e556ee7588271e76f4c1aa0b8df1cca5d459e565821",
+      "adaptation_notes": "Bound indexer K-gather and FlashMLA prefill-gather workspaces by reachable chunk geometry, retaining at least one full request. Adapt imports after the graph-classification patch.",
+      "head_repository": "ShuoleiWang/vllm",
+      "upstream_patch_sha256": "c831fa03c6f41e49b9db8bc0057d3fb033ff8496b2dc6f5941116d9700fc1d10",
+      "github_test_merge_commit": null
+    },
+    {
+      "number": 63047,
+      "url": "https://github.com/vllm-project/vllm/pull/63047",
+      "title": "[Bugfix][DSv4.1] Budget prefill memory the startup profile misses",
+      "state": "open",
+      "merged": false,
+      "head_commit": "54feb1b6a04977596b9231393afd80d311da99dc",
+      "base_commit": "5fa7b7b01bba4d4e9cd17a4036113d97d086bb8a",
+      "merge_commit": null,
+      "updated_at": "2026-10-26T20:38:58Z",
+      "patch": "011-63047.patch",
+      "patch_sha256": "8df6e921e9aeb3602d5b10d9012c9f66031a20e1c6bf1d2206284f08271c2669",
+      "adaptation_notes": "Bound expanded decode tables, release per-chunk logits/Engram previous_post, and profile Engram dummy activations. Omit later DeepGEMM BF16 coexistence accounting because the retained native API returns FP32.",
+      "head_repository": "gcanlin/vllm",
+      "upstream_patch_sha256": "62e350ab54ca266a42dd3a524ae6f9c23d591377fc5151ae408fccf3b80c216f",
+      "github_test_merge_commit": null
+    },
+    {
+      "number": 62860,
+      "url": "https://github.com/vllm-project/vllm/pull/62860",
+      "title": "[Bugfix][DSA] Reserve the decode indexer logits in the memory profile",
+      "state": "open",
+      "merged": false,
+      "head_commit": "a914b1a02bc9cf648f7b7f9f99f55a94e70fc5ab",
+      "base_commit": "36f5ff3172eb75433e54e496d64c473e951f8ecc",
+      "merge_commit": null,
+      "updated_at": "2026-10-27T23:48:30Z",
+      "patch": "012-62860.patch",
+      "patch_sha256": "8f4cfbc947ef18d4595837726747a233f09fb91653c92b5d63eaba8609611265",
+      "adaptation_notes": "Reserve max(prefill budget, aligned decode rows x columns x 4 bytes) for the retained FP32 native API. Cap decode rows by max_num_batched_tokens; do not import the later BF16 conversion or clean_logits API migration.",
+      "head_repository": "gcanlin/vllm",
+      "upstream_patch_sha256": "d3774a68431b9eb110fd21d645fceb08c1960f231d0df60aebe860dbf87d3d5b",
+      "github_test_merge_commit": "a8482cdb018133e0bb1d2267bf7fcc96423c1812"
+    },
+    {
+      "number": 60996,
+      "url": "https://github.com/vllm-project/vllm/pull/60996",
+      "title": "[KV Cache] Size packed groups by pooled bytes per request, not layer padding",
+      "state": "open",
+      "merged": false,
+      "head_commit": "e11bad7be5d67bcf4b3f6612e7ade4c2a304ed7d",
+      "base_commit": "c41b2639e29c3bc01add1d34bef3032a6d9d8aca",
+      "merge_commit": null,
+      "updated_at": "2026-10-26T21:46:41Z",
+      "patch": "013-60996.patch",
+      "patch_sha256": "f2d966a1789feb227675596f57a8fdc6b7a119a90fd379e0b42b8655cb83abc9",
+      "adaptation_notes": "Backport only pooled-byte grouping cost, including stride alignment and deterministic ties. Exclude the upstream batched SWA metadata module and model-state refactor.",
+      "head_repository": "aabbccddwasd/vllm",
+      "upstream_patch_sha256": "0e99048374174dfedcb519850de38ccd30e2a6e8e786cb77fcbff3aa0686d3c3",
+      "github_test_merge_commit": null
+    },
+    {
+      "number": 59849,
+      "url": "https://github.com/vllm-project/vllm/pull/59849",
+      "title": "[Perf][DSv4.1] Register CPU-offloaded Engram tables at their exact size",
+      "state": "open",
+      "merged": false,
+      "head_commit": "b2c6c8de6f26fed4f9618daf6fbb7ebfe5c21c1c",
+      "base_commit": "2d40c0609fd672e845ddfef0324ab6d8dd616af4",
+      "merge_commit": null,
+      "updated_at": "2026-10-23T16:29:38Z",
+      "patch": "014-59849.patch",
+      "patch_sha256": "8afd1ba05eca7d302ce4b90d0753cd515511341f2f878ecc1f41e1b638e469e6",
+      "adaptation_notes": "Extend the existing Linux THP registration helper to exact-size ordinary CUDA host pages. Keep sorted lookup for ordinary pages and the original THP path. Do not import the intervening ROCm allocation change.",
+      "head_repository": "gitbisector/vllm",
+      "upstream_patch_sha256": "802be053b16aba9d1eedeb6282ac6bd0fbd1cc96965ef161477e7eb47446f30d",
+      "github_test_merge_commit": "2d1cf211a7b5532b612fc2ea53fd9c8ffa7732e2"
+    }
+  ],
+  "files": {
+    "distributed/parallel_state.py": {
+      "base_git_blob": "fea0c4e3c78395a01efb09dec9c2d681a9f8a86b",
+      "base_sha256": "0e47cff9a89717183bdce6403f0454961848247f51306a0f1dfbe3d6e1b93336",
+      "patched_sha256": "83487ea91e1cf2b74a36942f4af1bb6fe2ddb69af68c66fdaa50f9a652dc57b1",
+      "legacy": []
+    },
+    "utils/flashinfer.py": {
+      "base_git_blob": "69401febea96654571167d81966abb7fcc73919e",
+      "base_sha256": "c0db917fb6525ccf616000b976d34028ff38f19f9f31bf445ad4cc4bc07fc5ab",
+      "patched_sha256": "3973344e50972b8105a83dd4e4eea32d26eb2e4e64e9829e9b9a91952e2fb92a",
+      "legacy": []
+    },
+    "v1/core/kv_cache_utils.py": {
+      "base_git_blob": "03c6c5ff62acc46cdad8878e02ede91d8043f733",
+      "base_sha256": "af4164bca819f1cdc416077522a7019936fd38a523a482283eb91b08dae0e57a",
+      "patched_sha256": "ce06c7810333bfaaa5ac631e8d175af3eed865a982118455665933fb1851099e",
+      "legacy": []
+    },
+    "v1/attention/backends/mla/indexer.py": {
+      "base_git_blob": "2d797ae66283821afb891a361c3c028128bd0f3d",
+      "base_sha256": "aabcb7f2e78b1136072edc87223b0d6e3bbd359b91dda5e1d0c86cba22f98f0e",
+      "patched_sha256": "8f47ffe3152e03eddbcb17ca4386e0d2ac5330c5d76ba9f9721501c64610accc",
+      "legacy": []
+    },
+    "v1/worker/gpu/model_runner.py": {
+      "base_git_blob": "57cef586f81fd48337bf43a437c392127ecc1a6b",
+      "base_sha256": "5240fe8d62d403e466a4aa07a28fb7af5c0f1e9b9c3bb08c4003185bde461f87",
+      "patched_sha256": "131b7d6e7b663253b0d3d0ee8c8d121320c1e8aeb04329cb17379794083ab8ed",
+      "legacy": []
+    },
+    "v1/worker/gpu/cudagraph_utils.py": {
+      "base_git_blob": "73be62319a64bfd8e0986811fdfce1a0e3914123",
+      "base_sha256": "ef2aae2eb3ec5ea97d4732f65c886b7a4688247721aacf23e536485e0ffc05ab",
+      "patched_sha256": "7130ad545133b5818da35b84b8e764fac55e9a7329e8a3ba0d8f2910fa2b56a3",
+      "legacy": []
+    },
+    "v1/worker/gpu/spec_decode/adaptive_verification.py": {
+      "base_git_blob": "5f91af59e5924bfb89b0c6cc0b6eb62e02010d06",
+      "base_sha256": "d91b0b67474b17e2c2b579291182d70a26b3573ecc4b0756f1bb3018d936c3a6",
+      "patched_sha256": "04edb4f4d5bcde698a47db074a102b4a3b0307d6e40a130e99eedb14c4257d13",
+      "legacy": []
+    },
+    "v1/worker/gpu/model_states/interface.py": {
+      "base_git_blob": "3db3fc9e7ae643f8e7011a2f4aa993867b4c6b7f",
+      "base_sha256": "71fd201cb8d54263385520aca6beffe11f1b032a91e6273c87673eca1deae680",
+      "patched_sha256": "237d9bc93f428ab1c06320359e1f4ad633e67ce11ab525f421a495808eba9b97",
+      "legacy": []
+    },
+    "model_executor/layers/sparse_attn_indexer.py": {
+      "base_git_blob": "935e4c0d2d446059c620e4729bbbadb79e76ca64",
+      "base_sha256": "75d14da5e2b8c237f7fc0a807d2b72677660a945c70d23825da3517801d9ca10",
+      "patched_sha256": "c8429b073db9aa9e4468281e6fc4c7ed501b1a87dc829712f65aa83d5780842a",
+      "legacy": []
+    },
+    "model_executor/warmup/deep_gemm_warmup.py": {
+      "base_git_blob": "a4775ce22e45e0598b0054e273b47b1ea727f6a7",
+      "base_sha256": "e8ce6642ea5266805aa8a5c4edbbca562fed5bcd4d3013f268a061710c937814",
+      "patched_sha256": "9030d3d4da0afe7713be13e6592899cb68c11b0e4e9b9f22c3bb0fb9cf1e7ec9",
+      "legacy": []
+    },
+    "model_executor/warmup/flashinfer_sparse_mla_warmup.py": {
+      "base_git_blob": "91ae7c44c2393435a5c22b7e1fc83f76ad9954c0",
+      "base_sha256": "b45b2405816e224aca0391ff7a852ab67a5998f7cedabc678446fba359e6ac40",
+      "patched_sha256": "4a156e3d48c8086ce757eb44eec687f0756ab2e42e3b58e77cc196d1e224ad55",
+      "legacy": []
+    },
+    "model_executor/layers/fused_moe/deep_gemm_utils.py": {
+      "base_git_blob": "1dee9bad54b769245a5ed15aadbd8b880648497d",
+      "base_sha256": "1cd2f8f53d96220617114b73aca910e75d1bb2607bccd18aa7a1f3d0486921ee",
+      "patched_sha256": "03cee36b01b5162a6537e9ba3c42c9f91314172c2ab80e6489249f66acbedd84",
+      "legacy": []
+    },
+    "model_executor/layers/fused_moe/experts/deep_gemm_moe.py": {
+      "base_git_blob": "0eef7a83356d35b11001c56f2133711a900dbab1",
+      "base_sha256": "016ade628799bde9a22d86ad882b6f49c49e938022fa0f787977dd7db0bb50fe",
+      "patched_sha256": "5ef837ce9be6cc0a0a3ac1636858311f7164dbb41e52931d430992d8bf659c12",
+      "legacy": []
+    },
+    "model_executor/layers/fused_moe/experts/flashinfer_cutlass_moe.py": {
+      "base_git_blob": "718e018c47e60ba6a347a077ec28c341b65b0a43",
+      "base_sha256": "82e1784f277df2d4e079b61c3af68fa11375e0f71f6cd9a7a95111c885e75963",
+      "patched_sha256": "dfe8aaf3b7b0f01f0021f699e46e434490c38c851d20d346963af9b919b75efb",
+      "legacy": []
+    },
+    "models/deepseek_v41/attention.py": {
+      "base_git_blob": "559d874cc483ae9c383c2903c2ea30cdef5cf341",
+      "base_sha256": "dd146642fc7d7034f32feecf35ff4d7d9460f59a8a57444c0dd6f367fe8f15fb",
+      "patched_sha256": "01738f443ff5e05076c773a33699e58740f4cd1defbc58f623630dceefc4d93d",
+      "legacy": []
+    },
+    "models/deepseek_v41/sparse_mla.py": {
+      "base_git_blob": "1130eec0903b77c09bec641772db3d85ef104785",
+      "base_sha256": "1b87aa3f27e7867b6508893da5f52a0f10944b59fd03aa58bd8c568f4e6aef16",
+      "patched_sha256": "cfa1a1565d6b683fb8577aa8eec416c601117c9c15af38523c19abbe359fea8b",
+      "legacy": []
+    },
+    "models/deepseek_v41/decoder_replay_layers.py": {
+      "base_git_blob": "28aa5e399f63cd37724ccbc612e34f16ae4600d1",
+      "base_sha256": "2fedc0a656a57cde7bc6780904e17484e2a4b9ac7aa7429ea392b1762908d1a8",
+      "patched_sha256": "cc973b7e936abe7162bc899b7eda1169cdc63f5df1db609563f1a740f8c12cf3",
+      "legacy": []
+    },
+    "models/deepseek_v41/compressor.py": {
+      "base_git_blob": "6f56ad8d5b2d927c20ce63f08dea909a58e8bc74",
+      "base_sha256": "5807de8cb84b945b088d1f951125e38e0e2ad5581b6ad8de246292782c0e2646",
+      "patched_sha256": "ba9e64c904481a380347067343fcea0f560bf59bff35ee268909801a748198a0",
+      "legacy": []
+    },
+    "models/deepseek_v41/common/engram.py": {
+      "base_git_blob": "236235dfa82fd74a4c3a77a69bdfc08d1b20f021",
+      "base_sha256": "80d6f14973c99be431029e0fba4a6a784a428501bd6ba1726cff0879e0e1627f",
+      "patched_sha256": "12935fa2df09ba498e615ae425cf5fb8bb9798f932e5410a255513733c0137c2",
+      "legacy": []
+    },
+    "models/deepseek_v41/nvidia/flashinfer_sparse.py": {
+      "base_git_blob": "a5ab092839592f6121006f621cc44f9767878467",
+      "base_sha256": "7926b4e3fa44fe0fc1ed3f93f0f292b4f56fa2103cf93c30a94d93958f84d682",
+      "patched_sha256": "d66e90318c595c02c7a2a5e721da9434ef372e68cbdbdbc8bcac68264f390ba9",
+      "legacy": []
+    },
+    "models/deepseek_v41/nvidia/model_state.py": {
+      "base_git_blob": "7fc0bd25ff75967d03a5283ec8fe068f06cc5bc2",
+      "base_sha256": "53e4fe39b2723ceb0b7338bfcef6d19ef5576389160c16e5718c3b16cfdcb72b",
+      "patched_sha256": "9d6ad6237b81cdca461e01d108fbb1ee4b65328e5f96d95cf19c27c95e5ff443",
+      "legacy": []
+    },
+    "models/deepseek_v41/nvidia/model.py": {
+      "base_git_blob": "8ec0155f736a118e7a20370c3cd1d2a7a06cff87",
+      "base_sha256": "5fe8b4a758ab586dd24ac218873a2c064cd3d72687b196dec4edf1b5e53f83a3",
+      "patched_sha256": "a9efb94c00968860628920d5190ec3126a04e2bc5e647badd88d88fbb6d645e3",
+      "legacy": []
+    },
+    "models/deepseek_v41/nvidia/flashmla.py": {
+      "base_git_blob": "ce3047ceca2bd532e22d4b989fd806335c4210d0",
+      "base_sha256": "6bfcc91c278bae8f9c95d9ec4da12ef98112b9ccf9d22547743485759c258348",
+      "patched_sha256": "eafd24d8e3600070d0169b76d0ee5d23f7ac8972209cdfbcdd960d70676adf11",
+      "legacy": []
+    },
+    "models/deepseek_v41/nvidia/decoder_replay_cudagraph.py": {
+      "base_git_blob": "c985f973bb49e4a26d470a6d09d3b079274a01ae",
+      "base_sha256": "4f8fc78c0500f31ff918ec2dfd86d3986b330cd6a49886ea02b323f69c80e0ea",
+      "patched_sha256": "8676894e8e0aa5d29107d57f70c46ef7933cd2f7452f3b6ea74bdd41c669676b",
+      "legacy": []
+    },
+    "models/deepseek_v41/common/ops/cache_utils.py": {
+      "base_git_blob": "a6139c71f836d931cd2f1850168243dcaa3fec30",
+      "base_sha256": "f0da7c855bc9c1be7289817e5896942fcf276d4c13113abff1fb81e8064023b5",
+      "patched_sha256": "532444e39ac68092d13b6fd633fc7461785e7b295d4fa7636f56a358a4925f51",
+      "legacy": []
+    }
+  },
+  "test_sources": {
+    "v1/kv_cache_interface.py": {
+      "base_git_blob": "79e88ca91d8f8fd119866357ac22d8f7fb34ad65",
+      "base_sha256": "39ea5be3054f97238f81ba070ea661f1b5975a6268ced5f413d4a057ea449d4a"
+    },
+    "v1/attention/backend.py": {
+      "base_git_blob": "466bba586d08c29da9d88c974bd6b799d0db7fa8",
+      "base_sha256": "981ec1fc4b84d085838d73c209bf058d732804f5112271e12c8e10fe648177ed"
+    }
+  },
+  "excluded": [
+    {
+      "number": 59846,
+      "head_commit": "3ebdb142b4a60b8dd7f9b525c1eae76af0bba2ec",
+      "reason": "Current head requires fp8_dsv41_inline and fp8_dsv41_inline_fp4_ca, absent from the pinned FlashInfer 0.7.2 API."
+    },
+    {
+      "number": 56509,
+      "reason": "Do not stack the older page-geometry workaround on runtime page-size support."
+    },
+    {
+      "number": 57028,
+      "reason": "Combined geometry/multi-stream/empty-batch bundle not imported; only the explicitly selected backports are claimed."
+    },
+    {
+      "number": 61149,
+      "reason": "Requires a native DeepGEMM version/API migration; retain the base compiled extension."
+    },
+    {
+      "number": 55671,
+      "reason": "Later managed-autotune cache migration is outside this legacy-cache adaptation."
+    }
+  ],
+  "dependency_lock_sha256": "e0ef4d005a9887119c57f9f434399b3e40f121d2f89ba9fd5f6b1a28f171f9fc"
+}

@@ -1,0 +1,799 @@
+{
+  "schema": 1,
+  "reviewed_at": "2026-10-28",
+  "cuda": "13.0",
+  "flashinfer": "0.7.2",
+  "packages": {
+    "cuda-python": {
+      "version": "13.0.3",
+      "requires": [
+        "cuda-bindings~=13.0.3",
+        "cuda-pathfinder~=1.1",
+        "cuda-bindings[all]~=13.0.3; extra == \"all\""
+      ],
+      "wheels": [
+        {
+          "filename": "cuda_python-13.0.3-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/31/5f/beaa12a11b051027eec0b041df01c6690db4f02e3b2e8fadd5a0eeb4df52/cuda_python-13.0.3-py3-none-any.whl",
+          "sha256": "914cd7e2dd075bd06a2d5121c1d9ccdd3d0c94b03ea5a44dbd98d24d8ed93bab"
+        }
+      ]
+    },
+    "cuda-bindings": {
+      "version": "13.0.3",
+      "requires": [
+        "cuda-pathfinder~=1.1",
+        "cuda-toolkit[nvjitlink,nvrtc,nvvm]==13.*; extra == \"all\"",
+        "cuda-toolkit[cufile]==13.*; sys_platform == \"linux\" and extra == \"all\""
+      ],
+      "wheels": [
+        {
+          "filename": "cuda_bindings-13.0.3-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/3b/98/0666ee759cd2e5306f911cbc95d2c6c814326906ed6b9c09e817a4b4a7c8/cuda_bindings-13.0.3-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "d56e46a9e984bb754e56b9d060cf027fe99f08a97651ce6d8aa1c2032476d01e"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/e1/36/2b2a43c8a6f8d8ff7a5ec7de1357ba3f1438ea69281c9deb90df29d55d56/cuda_bindings-13.0.3-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "c5f797ce534a303525259be0ae7ee9cfcf4f7874b22f1f9b8e85555509dccb83"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp310-cp310-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/47/67/5de1d48189511114859a1a131193896f88271c067a64b1159787e2d9f89b/cuda_bindings-13.0.3-cp310-cp310-win_amd64.whl",
+          "sha256": "74307cea1feee6c32a6e27b42e77beb22cd21cff4b7764fd214fa6ff89f8bd69"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/dc/67/9e171ee6359d4aabf2d8202802c85487cae6c2eb52b9352bb7754583802f/cuda_bindings-13.0.3-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "dfd66c25a133365c4f93e3396c38c64b04400ccafd18c3a889ae251a1bfabaa1"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/3a/66/d7036d9e402e6b5b57877a7496aba3bf2a0090f4fa3f072743fce3373eba/cuda_bindings-13.0.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "9afede5937474864aa794eb57399dbdf5d2b05427aadcac275209b0857528a61"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp311-cp311-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/83/25/620ce2afb6ea6d5da89d98375c85641f691924eef574247f7f0dd99f8bee/cuda_bindings-13.0.3-cp311-cp311-win_amd64.whl",
+          "sha256": "fce6d6b162457475b35e1a259ab643e683d1d20a84459fea898782e2f1e10a3b"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/61/3c/c33fd3aa5fcc89aa1c135e477a0561f29142ab5fe028ca425fc87f7f0a74/cuda_bindings-13.0.3-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "b899e5a513c11eaa18648f9bf5265d8de2a93f76ef66a6bfca0a2887303965cd"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/21/ac/6b34452a3836c9fbabcd360689a353409d15f500dd9d9ced7f837549e383/cuda_bindings-13.0.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "cf41d9e69019939aa15296fa66ea7d3fdb8d2c6383f729f4b1156c8b37808a06"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp312-cp312-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/a8/76/ad9cc2f0496886c37aefbc00256197a6043a3f04bbe959481e6908310afe/cuda_bindings-13.0.3-cp312-cp312-win_amd64.whl",
+          "sha256": "6b12ccd98f447aea9589d32caf9efda0c193994080752a60f790b646d519fe8c"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/2f/36/41ccc303eb6be8ae82c5edd2ccae938876e8a794660e8bb96a193174a978/cuda_bindings-13.0.3-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "fb16a7f769c9c67469add7a1d9f6c14dd44637f6921cb6b9eb82cb5015b35c3d"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/ab/ac/699889100536f1b63779646291e74eefa818087a0974eb271314d850f5dc/cuda_bindings-13.0.3-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "512d0d803a5e47a8a42d5a34ce0932802bf72fe952fdb11ac798715a35c6e5cb"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp313-cp313t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/11/67/9656e003f18c5b32e1a2496998b24f4355ec978c5f3639b0eb9f6d0ff83f/cuda_bindings-13.0.3-cp313-cp313t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "c859e326c776a47e66c50386a10c84fe34291eb6e711610c9fd7cc27d446334f"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp313-cp313t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/18/d8/a83379caa7c1bed4195e704c24467a6c07fe8e29c7055ccd4f00c5702363/cuda_bindings-13.0.3-cp313-cp313t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "e675dbd009fb5e66d63fd13a8ff35f849120f01bcc4dafadbced3004605c3588"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp313-cp313t-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/7c/e0/ff1eeda06364df8c750843432ac6efb33a06df38261f0a1ceee59bb7dac2/cuda_bindings-13.0.3-cp313-cp313t-win_amd64.whl",
+          "sha256": "193762306b6032c00a141fc38bcef92c6fb4d332fd2d6a550c7f950e7fd8acd8"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp313-cp313-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/8c/f9/a2f5910aaf21f4cd43f456ea80f47f1424eece5b8f063dac1980304b8ef0/cuda_bindings-13.0.3-cp313-cp313-win_amd64.whl",
+          "sha256": "dd83e8d79587e265b82d3e589ba6b061770537443dfb1bb4a74f755c8b13f62b"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/e8/99/0042dc5e98e3364480b1aaabc0f5c150d037825b264bba35ac7a883e46ee/cuda_bindings-13.0.3-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "7c7e6e89cdfc9b34f16a065cc6ad6c4bab19ce5dcef8da3ace8ad10bda899fa0"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/7a/c4/a931a90ce763bd7d587e18e73e4ce246b8547c78247c4f50ee24efc0e984/cuda_bindings-13.0.3-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "e93866465e7ff4b7ebdf711cf9cd680499cd875f992058c68be08d4775ac233d"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/6f/2c/ec611e27ba48a9056f3b0610c5e27727e539f3905356cfe07acea18e772c/cuda_bindings-13.0.3-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "ed06ef3507bd0aefb0da367e3d15676a8c7443bd68a88f298562d60b41078c20"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/d4/2e/02cebf281ef5201b6bb9ea193b1a4d26e6233c46571cfb04c4a7dede12b9/cuda_bindings-13.0.3-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "3ab845487ca2c14accdcb393a559a3070469ea4b591d05e6ef439471f47f3e24"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp314-cp314t-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/36/d2/088c28751f54df7a251259ef3f99d34c428e12653f15db02fd62a96247af/cuda_bindings-13.0.3-cp314-cp314t-win_amd64.whl",
+          "sha256": "aaa0934e16aa20ec10fbb1ecc53a6961b8d1c06a970fe05cc6ee7d2a805a090f"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp314-cp314-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/14/3e/5725b2e5b9ac22bf19a50ec5f7611301ab6111c98ccf1b6b125fdaa71550/cuda_bindings-13.0.3-cp314-cp314-win_amd64.whl",
+          "sha256": "bd2364bc49925837ce18dda259c3a36e539977ca0297799a54891cae1d5213f5"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp39-cp39-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/58/e3/71a581c8e38a9a795c757f89e811f57397d8bf64c359c7cbe2cc68f2056a/cuda_bindings-13.0.3-cp39-cp39-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "abd8481400f959484e48008281b2ff034ac6973881906afee1d346e11f1e1aae"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/17/72/f70f67a563562dea12beeb12e7700c94aceaa81fddaa547b8ffeb5940250/cuda_bindings-13.0.3-cp39-cp39-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "547959c87185ce7d0a547afa1b728bb707c9f0db38994f8b89442f3bdc379d73"
+        },
+        {
+          "filename": "cuda_bindings-13.0.3-cp39-cp39-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/6c/b7/972b6648b4b802a41e208cc2ed08e8693f8d4c593ae78c6da5f77ae3711b/cuda_bindings-13.0.3-cp39-cp39-win_amd64.whl",
+          "sha256": "1769956c8d868fe16535e02201b0b9e8a485f4e83024f9010f3e9b48a4387aa1"
+        }
+      ]
+    },
+    "cuda-core": {
+      "version": "1.0.0",
+      "requires": [
+        "cuda-pathfinder>=1.4.2",
+        "numpy",
+        "backports.strenum; python_version < \"3.11\"",
+        "cuda-bindings[all]==12.*; extra == \"cu12\"",
+        "cuda-bindings[all]==13.*; extra == \"cu13\""
+      ],
+      "wheels": [
+        {
+          "filename": "cuda_core-1.0.0-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/55/f9/ee15afbef66fe435220e096965120b2dbdc220a3ef54d356171dae4ae03a/cuda_core-1.0.0-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "b3d2535f58c46022719f267fa606a78d068d29182be99de172624758500d4db3"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/13/cf/43e6859db154f1a8888c556810689208bba1a028a8e26e783d5678e42419/cuda_core-1.0.0-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "c46ffa16ba694cd6782f9f74dc87e72cb66561510c69d2b00defd9e7720ea75c"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp310-cp310-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/34/b1/f1e798b0901ebdb98f197e29dbf3cb8d8cc94d3f0d9d03dee4d8a07be379/cuda_core-1.0.0-cp310-cp310-win_amd64.whl",
+          "sha256": "85b213cdf6a43fc59231ba34d9ed4d15f280a49d4262e2066e400459f76c4d8a"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/b4/24/7dd4ce2ff303c06334aeb9ad05b674f9bc2cd33c7bd7c23c7fb693fd893f/cuda_core-1.0.0-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "41cbf16ad9090741b7411040ec1739eb3758fc2eb2cc1edb5f4a860d8ab77d50"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/11/8c/1d037c118fdb40b1b28aa3af76a36f39b54bfb6d5121b59dcde70fa1b724/cuda_core-1.0.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "4d69e60db6459abdae66779fc1566909c274cf1f478b0b9ef03c9b53feba557b"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp311-cp311-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/6f/01/fab6adeb2b77ddacd01875f397c4d392065d5091fd5f312e9b618ab10dec/cuda_core-1.0.0-cp311-cp311-win_amd64.whl",
+          "sha256": "e396aa363dba5808dd74013a7aa1fa612743e681e056e861173055f17187d082"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/ae/7a/d00a4e23f87569823f67afa6130a8a2d43479e084cc81a778f19d292503c/cuda_core-1.0.0-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "aad2d101ed4df242f724f042b98918a17a89d7d879fc20804187bdb568e1ba52"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/3d/b1/4b766c2ebc55427560d830c0b07797fb7effbefea40b29ae9dfd586d4876/cuda_core-1.0.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "f88d80b7b63193e73c0c77d02a672c4aee416224d25a8f9a00ecfe47be7b1a07"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp312-cp312-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/9a/11/d1dc4b781746c682f1a7a3b64c9a4e8306da4e2ad6922e57563bc2ef93f8/cuda_core-1.0.0-cp312-cp312-win_amd64.whl",
+          "sha256": "ce25c10f075e0b6cb668e1a68939b33bd762412fa620988ee043688a4b4850dd"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/8e/9a/7a651c9b8d7a6fea42ed03eced16dff6c4936a214e3da561e2f3e4fb3244/cuda_core-1.0.0-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "22a9e0cad660c484cba4fd61bddaa8276773aa856dc1398980aa2c1e90d63fd2"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/d7/7f/fb593a11d4a20360a7141d397c27c279db06e75443c38c29dd211f9b0e81/cuda_core-1.0.0-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "2a97a55e13227365412568394be8c1a85e24c60b56bc44c45333df71fcf01bcd"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp313-cp313-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/58/28/325102a2e115d87bf858055b61111617708955cd5fca9362e25a3f548817/cuda_core-1.0.0-cp313-cp313-win_amd64.whl",
+          "sha256": "0f2244f5acabbc2f4916bf5101a2694e284457967d897032cc20b096222dc1a2"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/7a/50/15cf8a13ca102ec8b3246aa560843c03a35ef88c4432a705848f1536f6b0/cuda_core-1.0.0-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "b59b1a6554119756a68946eca1f0fd2156f0ab4b38f49ba828370bf336a079b9"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/3a/c8/e3e45141d47bd69d5c475005231cfec66ab85e34e09847a7b6d28edb1bd4/cuda_core-1.0.0-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "41840d028b8f3eb86ed2dc035527b598fa95223ecc2b8b045be5f5b740bc6b09"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/99/69/663fe3211e336a6699f75bedf150eede435f5c9d95d33fb0be752390aa32/cuda_core-1.0.0-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "7f77963b3a047f39c3898771b8e0eebd7717be84d08d58241a137af60e40583a"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/f7/b9/33b5e86b8526dc1caad75f6deb3ffbb26a1b8e2e972169ef32b9e44a2e21/cuda_core-1.0.0-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "f652119ce74d66a493f6b2b8454741de0a3c7c3791a6fc788a9527f953eec188"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp314-cp314t-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/32/2c/29a04845dbe5cf2373b87023f214f1857006426fddaa68b23fd4e87e46ae/cuda_core-1.0.0-cp314-cp314t-win_amd64.whl",
+          "sha256": "9cdfa2f664536e50b441c2fc1ae7f02a2d86f02b924f9b6622903557cf92725b"
+        },
+        {
+          "filename": "cuda_core-1.0.0-cp314-cp314-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/f3/fc/d3f0f94f74586ffd8979be79e2f907bfeee18247e1d4b4b588f7b96c34fa/cuda_core-1.0.0-cp314-cp314-win_amd64.whl",
+          "sha256": "085df8962e74885c1b342f959bbc43d5580c38bcd24deef262a3d11a759856a1"
+        }
+      ]
+    },
+    "cuda-pathfinder": {
+      "version": "1.5.4",
+      "requires": [],
+      "wheels": [
+        {
+          "filename": "cuda_pathfinder-1.5.4-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/11/d0/c177e29701cf1d3008d7d2b16b5fc626592ce13bd535f8795c5f57187e0e/cuda_pathfinder-1.5.4-py3-none-any.whl",
+          "sha256": "9563d3175ce1828531acf4b94e1c1c7d67208c347ca002493e2654878b26f4b7"
+        }
+      ]
+    },
+    "cuda-tile": {
+      "version": "1.4.0",
+      "requires": [
+        "typing-extensions",
+        "cuda-toolkit[nvcc,nvvm,tileiras]<13.4,>=13.2; extra == \"tileiras\""
+      ],
+      "wheels": [
+        {
+          "filename": "cuda_tile-1.4.0-cp310-cp310-manylinux2014_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/c2/df/0bb510403487484bed0a844793a1e8a043e3c4fe35f92f6e1cb5de3bd35e/cuda_tile-1.4.0-cp310-cp310-manylinux2014_aarch64.whl",
+          "sha256": "8758454ae3971cd8dc195a61210e42ad3696528a9da6a4a429da4cdbbf305d80"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp310-cp310-manylinux2014_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/f0/6f/a20b815a20b578c42bd056e40749477efc33dc098cb04dc3c7a3417b17b3/cuda_tile-1.4.0-cp310-cp310-manylinux2014_x86_64.whl",
+          "sha256": "63fc9edd9376a196870ff9dcd9cdb9a7e4d2f2271a4e531c390b232bc60ee0f0"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp310-cp310-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/cf/c2/bbf50ef77786c8b4d5160786d4ab205f567eec0e80dc93906b3340bd7edd/cuda_tile-1.4.0-cp310-cp310-win_amd64.whl",
+          "sha256": "bbfaa33f86d93c7a0ae1f82b626a9f442cd6ff5f991c8a4e7214abd170cf3d21"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp311-cp311-manylinux2014_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/ae/d4/a5849ee8ee58d0275c9e7738aa5b16d1ad669ed5aa4d1b26af683eda065e/cuda_tile-1.4.0-cp311-cp311-manylinux2014_aarch64.whl",
+          "sha256": "da2649de97cbaf886d564a9f75b3bd2fb112999c99c58a27c817a46bb8725f29"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp311-cp311-manylinux2014_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/c6/1b/575207f424c75e7b1608e056a89c15bfc3750f6178e5c659f693a7e822b1/cuda_tile-1.4.0-cp311-cp311-manylinux2014_x86_64.whl",
+          "sha256": "5741a789aaff85e3b2417b8611f0d11f967b9bac567432f0057b2b8bf72259ac"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp311-cp311-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/1f/c9/1b8df78c55f7ef544e7b7aab381a99495650d49c65e3ba85189e888b89b7/cuda_tile-1.4.0-cp311-cp311-win_amd64.whl",
+          "sha256": "9825202c1175dcac6c2daafd176da4444801e13049b4e2688d92f5b582f6ea6d"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp312-cp312-manylinux2014_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/42/93/64ef40d3982dcda7a97ebfa3e3bb9045b573d4eb3877fa5d1fa3cd2541d3/cuda_tile-1.4.0-cp312-cp312-manylinux2014_aarch64.whl",
+          "sha256": "9e358a85a153820aa0a51d0e09346d884a3c14b88c0313d20d0fb9f53952abae"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp312-cp312-manylinux2014_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/d7/9a/7fbdbdb30c375f80818941165adfc4f1dc6cebaf937c6a9081a02d5871f0/cuda_tile-1.4.0-cp312-cp312-manylinux2014_x86_64.whl",
+          "sha256": "1d9d99b6fa57366af3f8707ac4fd91411275af2ee736996a60620240fcf92070"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp312-cp312-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/6f/bb/4152dc08a8de5bcdc4b9d80b6917216289526f6e786b09ee80d4df27bcfb/cuda_tile-1.4.0-cp312-cp312-win_amd64.whl",
+          "sha256": "616f13cbc7af6caa7b92430b85ba0a429d1f96ca9e7e04a29d89114cfe859663"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp313-cp313-manylinux2014_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/5e/ad/42f0655e6aee5c59015634b46d7f13bc22e74af28d10fb2008a062b37349/cuda_tile-1.4.0-cp313-cp313-manylinux2014_aarch64.whl",
+          "sha256": "fc74185efd81f6153af0a19549d111dec6861ee9b9bc27927a2cef6e19173eb5"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp313-cp313-manylinux2014_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/11/0b/4770f9e36b8108ce8c9078f71eb21c65e594d79c0770dd38daa045cfbd6c/cuda_tile-1.4.0-cp313-cp313-manylinux2014_x86_64.whl",
+          "sha256": "45be74f6568c440446f510bc7799b953858e64c6abf26e96f2c9598a79084860"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp313-cp313-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/a1/67/41f1acdf21bf6214a3a1c3b46d39b8eb0f9eba7aecc6b57005db35d56f9a/cuda_tile-1.4.0-cp313-cp313-win_amd64.whl",
+          "sha256": "edd1df4d7955032c7be2a26c6d7e47261415ba7c87587705e0f4f1fd0d61650a"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp314-cp314-manylinux2014_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/0d/c6/46a329f4c56ce54471784366394e235804423df2531307e14112e4636c76/cuda_tile-1.4.0-cp314-cp314-manylinux2014_aarch64.whl",
+          "sha256": "738593650784ebb3c601486914b563e7569144fe596048766ea9e12280ac3bb9"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp314-cp314-manylinux2014_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/8f/fb/bf3849ad68b1858ba50e6992863d266892d7d7db02d11c485c26cd090a1b/cuda_tile-1.4.0-cp314-cp314-manylinux2014_x86_64.whl",
+          "sha256": "4b1a591c26836a550c2bf87c22d31c4716e5f83d24d255f843d9429625cca973"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp314-cp314t-manylinux2014_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/ab/df/f7f1dfa4d1ee7cc5b69e11d756be6ffec1561a5c7e3836fd0f71ca49adcf/cuda_tile-1.4.0-cp314-cp314t-manylinux2014_aarch64.whl",
+          "sha256": "b3cbeffbe0fedac4936edcf00b6ba13ab5ddb74d3b7ce4a287dfc04491b5f6af"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp314-cp314t-manylinux2014_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/18/c0/fee527a085fca414fc993769912eb8ba2e15ce388f3168b868706e6d4c61/cuda_tile-1.4.0-cp314-cp314t-manylinux2014_x86_64.whl",
+          "sha256": "675b2afff62af5d4e72c34bc72d0be27b0933a44933b8a449f590fbded8c1107"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp314-cp314t-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/0d/ab/0883194457932150a5ad334d609ac17bd704345974d21c8bae6ea251e7ed/cuda_tile-1.4.0-cp314-cp314t-win_amd64.whl",
+          "sha256": "3f58eac5577ea3ed7c17bfcab015a506fd2cf61f8848407c5b403f1bf46c55ca"
+        },
+        {
+          "filename": "cuda_tile-1.4.0-cp314-cp314-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/61/bb/211c0d5121230ee76cfc1a9ee107ec28aaae9e6ffb43a04aa172d0d4f4dc/cuda_tile-1.4.0-cp314-cp314-win_amd64.whl",
+          "sha256": "c19e10fe70ba92709b6ca446d1c52a8a346b56f4f8ad7c8941736f60e32f3c87"
+        }
+      ]
+    },
+    "nccl4py": {
+      "version": "0.4.1",
+      "requires": [
+        "packaging",
+        "numpy",
+        "cuda-core~=1.0",
+        "cuda-pathfinder<2.0.0,>=1.5.4",
+        "nvidia-nccl-cu12; extra == \"cu12\"",
+        "cuda-bindings~=12.0; extra == \"cu12\"",
+        "nvidia-cutlass-dsl~=4.6; extra == \"cu12\"",
+        "nvidia-nccl-cu13; extra == \"cu13\"",
+        "cuda-bindings~=13.0; extra == \"cu13\"",
+        "nvidia-cutlass-dsl[cu13]~=4.6; extra == \"cu13\""
+      ],
+      "wheels": [
+        {
+          "filename": "nccl4py-0.4.1-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/a5/80/91c9c734317682aca588885f9c23c05826b2b9540d755c545b0659a731bd/nccl4py-0.4.1-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "b9c4aa9da3961bb95aa0ae1033b739e1876e855395caaae21a08dacd46a97cdc"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/44/7d/af090d73bfeb249e78a689a28d55e0854ce938238a081662ea9f4d7e5ea9/nccl4py-0.4.1-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "5492998463df649b0e4c6bb6a929ea4ee3fb2279200e2bcb059a9d595acf2902"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/f2/db/76b4c0f7a42c822161779545d8b7e36ceb37e7add3cac2c40685b63c1e55/nccl4py-0.4.1-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "8b571069843bf10ec02c7a869661844bf6d443eccd5de94faf68e3e15a90be37"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/a0/8d/10f245ea564cb0b0e04016eb1964062d5a4d9255ae4c4ff30a59c5c15815/nccl4py-0.4.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "89a4cad32b6a81df416e4c635e95330306f0225ca93bed2a59d99c66a30ef90b"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/ab/8f/5ebcde1be48b93f4b7c9ada45dcbedd65b428f0dd5e709450b4d5856bb6a/nccl4py-0.4.1-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "bc16c15273e8915cfafcf3d749577adc0dc62788003bb082aa4b92875f7b7c8c"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/80/42/a92234099ce218a0b5f79b94bd28568c6a9290877c2c6b6f6a1cf7fe6fe1/nccl4py-0.4.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "1ecff0c9f3afdcc18351652da30bce0e326860a22853a280946d15b281dd577d"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/6a/1c/412099397e727a5a03864121959546e7aee90034c543b2ea637d201a79c4/nccl4py-0.4.1-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "3d31180a94b4220b50c5dd1627965303055733cf0f790bd9275afa95fa84ac5c"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/b3/71/4199004ba5db045053c0a13beab790e0facbf78b139656b459ac4791cee1/nccl4py-0.4.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "c39c7b59dca0460cd7e34473dbb4aa7fbce4a3380d237817f1d3ed629f98ef9f"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/c5/ad/a5acacd2abb0b62fe11f1bb8a99da18dbc2d0e05ce5e3dcca7a269bed064/nccl4py-0.4.1-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "2771c65334b1945ea16e767ebf4948506f987f31980621b35dcdfda980de356b"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/84/47/ab9eaa6e41c2b3f2c8738f48e1a5b8eb48cb492525187dd8b3984dc54b28/nccl4py-0.4.1-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "5898cd7270a7899589d5d74012732b1b01bb6aa4660335692094dd7895e44039"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/ba/21/621d7a101430cee2d1de753abab9dcb15d5d88df303c3daa39a49ed4f206/nccl4py-0.4.1-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "0d6d1c29d63302d8d6f14ea03c113b291373ff9da56c3e248636513993fb4b09"
+        },
+        {
+          "filename": "nccl4py-0.4.1-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/c2/a2/780bf31991be6f34117946a4b2b95b5ac7d2565b50f0bbe7d03971b992ec/nccl4py-0.4.1-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "58000b47a1bf13c3ff64fb551b2cf8fc1a2c3a6c9b91d784f0d594e4a3006e62"
+        }
+      ]
+    },
+    "nccl-extensions": {
+      "version": "0.1.0",
+      "requires": [
+        "nccl4py",
+        "packaging",
+        "numpy",
+        "cuda-core~=1.0",
+        "cuda-pathfinder<2.0.0,>=1.5.4",
+        "typing-extensions; python_version < \"3.11\"",
+        "mpi4py; extra == \"bench\"",
+        "nccl4py[cu12]; extra == \"cu12\"",
+        "nvidia-nccl-cu12==2.30.7; extra == \"cu12\"",
+        "nccl4py[cu13]; extra == \"cu13\"",
+        "nvidia-nccl-cu13==2.30.7; extra == \"cu13\""
+      ],
+      "wheels": [
+        {
+          "filename": "nccl_extensions-0.1.0-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/a9/aa/f5d3a72f1f06745e4cc06afb1aca27ba18d96c684184f2885b80c01dbfa0/nccl_extensions-0.1.0-cp310-cp310-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "1739bd8d22d3118948bcabb05fda19c375b572301518d8e77e4dd622cab976f3"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/a9/f0/1058d305f9bb76faaa6d3dc7bbd753b79da2f1a476b984ccad8bc5383231/nccl_extensions-0.1.0-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "a76dca0d039640e9a49447d679beaa0307f5df5c1b46efd6772ce955bd7b16df"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/81/70/8cb06143dc7926020f717d649d91b9302eb3346e29b8fdb13b257ef78d4b/nccl_extensions-0.1.0-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "b5130d94bbc02852f1deb5ab38e944dc7e0db0f1b4769f5f3c8d652eb5776a86"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/01/f8/5b61524b1b1a014ad523bbde766dfa6f9de76865bbaf74aaaf3fd2a7bf37/nccl_extensions-0.1.0-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "30d42d0218f46e394a21c5663f09ee9bb8a90caf4d69f0040e5a9eb2fef7b8ad"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/24/77/a02842f3e7d6aef181733f94d313a1ff4b3db2726e2c067d7946e8f34cc3/nccl_extensions-0.1.0-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "d85e203e284b50dad3846d6fb0d35560378537689f23d92a16c67f7d854025d7"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/f3/3c/b043c1f8ca2766d48e30e9cc5a0d65d51aef77e3a8d18dbbaa95fd5386e2/nccl_extensions-0.1.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "54d46bee108f0bc18cdc35dbe17bba6452d6a38a270fa5e8ccde03267460fa87"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/90/8b/0d98ca96c8625af88d834230b34115fac032ed69eb84c8bde7c38b956d16/nccl_extensions-0.1.0-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "3678bce16864064a9f8774ec69f5c023cb2cbcd91db60a7f98e7c87fd4f18a50"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/5b/66/0f0a3fe84ffdf6ddfb13c01a036ea370519204820cc8c53303f479c43a09/nccl_extensions-0.1.0-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "3328dc1cfeed0ddf37caac00be8c49b3e4f727dce0e7980f8831696165619a4f"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/f0/21/ad0697074c2050fd7b6ee6f1909f1bb75019b710319baf1907d6d8a65476/nccl_extensions-0.1.0-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "de0ac4801a9ca851a13b2abe3825a8c60fe2a12c637d96b675ea564b31db9152"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/d9/3d/2af7630a67b2c2d96e4ad520a3a04957e92b66dbc0c886520aa96b7b5c57/nccl_extensions-0.1.0-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "28f2513696bd03453857db32a5f6144631f874efb23b5fede4c6218e6026d6b1"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/6b/8e/0a04f409518bfe3703519e494e876f3b1f363692392f8523dce23e19e2a1/nccl_extensions-0.1.0-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "11226949d4daaa9c95ca1b0de4227712291954ae50f8408d97e19af2c0f45d19"
+        },
+        {
+          "filename": "nccl_extensions-0.1.0-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/e2/af/3a54416ac5e5ec08254195216e9708b8e91371d436e5c5459348400fdb98/nccl_extensions-0.1.0-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "647f28b3a7a7d5c5c40cc7db544ed7ff362ac091b28e806de93c6215d2af45fe"
+        }
+      ]
+    },
+    "nvidia-cudnn-frontend": {
+      "version": "1.31.0",
+      "requires": [
+        "nvidia-cutlass-dsl[cu13]>=4.6.2",
+        "apache-tvm-ffi>=0.1.11",
+        "cuda-python; extra == \"cutedsl\"",
+        "nvshmem4py-cu13>=0.3.1; extra == \"comm\"",
+        "cuda-tile>=1.4; extra == \"cutile\"",
+        "triton>=3.7.0; (sys_platform == \"linux\" and python_version >= \"3.10\") and extra == \"triton\""
+      ],
+      "wheels": [
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp310-cp310-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/30/c5/fb5ae029490072b139b50dbcfdf26f668e45f274e9f12596a1792dbd5499/nvidia_cudnn_frontend-1.31.0-cp310-cp310-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "4bb7cad9c6e41003f149717f072c70139ed73243172bd8f64f12222e8b1556f9"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/83/aa/15baf4db6e5c6f547aeafff8e158827286f7bd2347d59e59d8b1286ea791/nvidia_cudnn_frontend-1.31.0-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "f7ae50ce35cdca2a995f2a0765ba95b60ca4a28c157624ad099df4b69a8439e4"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp310-cp310-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/1e/51/e8951d811bb16ef33550aafb42e4a82d4ee3d88e1e5526a2331f52f89604/nvidia_cudnn_frontend-1.31.0-cp310-cp310-win_amd64.whl",
+          "sha256": "cd578e982f76e627dfa5ed8900237a53696e9dacc97447fbd327f45d8211699f"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/64/19/10c2ccd549b064ac54885bbdbbb9ceb94e329c1e26716f4529331619429e/nvidia_cudnn_frontend-1.31.0-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "5d1ae02680c2e75e32f12a7c1a189082aaac6864451d64f4c4c2c9ba0616504e"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/b7/1a/dd78de8a3f2711de7e282f0c2b2365dbdbfb079047d12df15ec9aa2a8d3b/nvidia_cudnn_frontend-1.31.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "be3831ed007147d4720f7821501aeb448456074615326363ec2ea3ad6e6c45d3"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp311-cp311-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/21/b2/62b8f096df9faf092d42b8f86c355735395026f4a080a762cd861a5ee85d/nvidia_cudnn_frontend-1.31.0-cp311-cp311-win_amd64.whl",
+          "sha256": "f9a04bd0b5fc0ca5bdff4a0a423b443c8edc879aa2ae954ce8c328eb6a5c9fc4"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/bf/4b/ba084b26c9709b05446642413aa4bbb1056fe00af7f99e356a3cf24774d6/nvidia_cudnn_frontend-1.31.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "47d1a5432f59a2a7d0f903727c0d244e1413a20686b98d8e3890919c5d82a508"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/cb/24/8ec9de1fd9ea95e1c1cb9e6e2d3a5547aa9c5ece1136d650ffce1bb5d8c5/nvidia_cudnn_frontend-1.31.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "3171f102254136418f24b4470dfa5419f34b03d9d792a4b773cf65c7a37e6bf8"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp312-cp312-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/4f/b6/caa5b41361034e7884b465afa2214137ec325be8ea099553f6e597f75af1/nvidia_cudnn_frontend-1.31.0-cp312-cp312-win_amd64.whl",
+          "sha256": "786c7dc590d436338c55b74e3204fc2adb4739acafb1a5e46ce032282e601e2e"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/d8/fe/b4263f0f05befaa9ebc760ae94229363ac66e4909e622d673691a0eb35b3/nvidia_cudnn_frontend-1.31.0-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "b01d93e6ed709c349aa33a3db32075910ffccccd40b017aa293d93a6172c64b6"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/59/44/8bccef95102ed1b536b05aaf9a4b6d1c3bd51cbe98a31a9718efa5ce15ed/nvidia_cudnn_frontend-1.31.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "8095ca4f3bc86e44e5da16584e951a0c33030962d9f647baa20cc1a848188b68"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp313-cp313-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/89/d2/92a862203420b6d00dd3634b24ebebf20341be9ee2ee7e632f74f0d4c4f9/nvidia_cudnn_frontend-1.31.0-cp313-cp313-win_amd64.whl",
+          "sha256": "a30b02bd92415a82c448ad988b7c5cbb96bd9654d88b4137a7ac37db5aa7ac9a"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/55/80/dfc27b7a6827b58c9b4a5dfeb424ef07549bcd82390b95f5eb222f008b12/nvidia_cudnn_frontend-1.31.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "0d5f26cc1f9a2869f7ec05b2155e1e04bcb271a4b7272a310fddad7f34e8347a"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/35/f5/890417a7317704edcfc260ab3186af15417e30d7f27942ca9cba1cf9f64c/nvidia_cudnn_frontend-1.31.0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "9f9ca9fd86103057bb80d40f848090a3dd2d39758596b0555f024b90f062009b"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp314-cp314t-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "url": "https://files.pythonhosted.org/packages/04/7a/998103de44dadc6383afec7fe241e8d300b953d8e2f64c46c891b8943ca9/nvidia_cudnn_frontend-1.31.0-cp314-cp314t-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+          "sha256": "11286b8798f417b43532a676cf881aa11181ba9b4b726ab048cd3286b53f7d31"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp314-cp314t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "url": "https://files.pythonhosted.org/packages/6b/66/a2f2aadd6d0c5e8afa333c4fa5daf5e3007c484e228be5c16c196ff41b2f/nvidia_cudnn_frontend-1.31.0-cp314-cp314t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+          "sha256": "640205cc0eab9df478e3c46a068bf0fe407ef185a2614e710c0d4f9f64c4efc0"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp314-cp314t-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/96/6b/55da0c1e8e27056fca18396618bc60660c9238e9b8c64f3a9685de874288/nvidia_cudnn_frontend-1.31.0-cp314-cp314t-win_amd64.whl",
+          "sha256": "dc2cd889dc72e16768b773f15f53af1fac7646173c4a1e57f41c673dd45c52b0"
+        },
+        {
+          "filename": "nvidia_cudnn_frontend-1.31.0-cp314-cp314-win_amd64.whl",
+          "url": "https://files.pythonhosted.org/packages/45/f5/9c441440d97f9964199f3be4ac3d7e7ffba6f7c67762eb846ced32e2d46c/nvidia_cudnn_frontend-1.31.0-cp314-cp314-win_amd64.whl",
+          "sha256": "1168c10f7dabbaa261b34794ef51a7ec5f5d1c6d73156e765045ca62bc6d7bfd"
+        }
+      ]
+    },
+    "flashinfer-python": {
+      "version": "0.7.2",
+      "requires": [
+        "apache-tvm-ffi<0.2,>=0.1.11",
+        "click",
+        "cuda-python>=12.0",
+        "cuda-tile>=1.4.0",
+        "einops",
+        "nccl-extensions>=0.1.0",
+        "nccl4py>=0.4.1",
+        "ninja",
+        "numpy",
+        "nvidia-cudnn-frontend>=1.31.0",
+        "nvidia-cutlass-dsl>=4.6.2a0",
+        "nvidia-ml-py",
+        "packaging>=24.2",
+        "requests",
+        "tabulate",
+        "torch",
+        "tqdm",
+        "torch>=2.12.0; extra == \"b12x\"",
+        "nvidia-cutlass-dsl==4.7.1; extra == \"b12x\"",
+        "nvidia-cutlass-dsl-libs-base==4.7.1; extra == \"b12x\"",
+        "nvidia-cutlass-dsl-libs-core==4.7.1; extra == \"b12x\"",
+        "nvidia-cutlass-dsl-libs-cu12==4.7.1; extra == \"b12x\"",
+        "nvidia-cutlass-dsl-libs-cu13==4.7.1; extra == \"b12x\"",
+        "rich>=13; extra == \"b12x\"",
+        "safetensors>=0.6; extra == \"b12x\"",
+        "nvidia-cuda-nvcc>=13.2; extra == \"ptx\"",
+        "apache-tvm-ffi<0.2,>=0.1.12; extra == \"ptx\"",
+        "nvidia-cutlass-dsl>=4.7.0a0; extra == \"cu12\"",
+        "nvidia-cutlass-dsl[cu13]>=4.7.0a0; extra == \"cu13\"",
+        "nvidia-cutlass-dsl[cu13]>=4.8.0.dev0; extra == \"sm107\"",
+        "nvshmem4py-cu13>=0.3.1; extra == \"sm107\"",
+        "torch>=2.8; extra == \"sm107\""
+      ],
+      "wheels": [
+        {
+          "filename": "flashinfer_python-0.7.2-py3-none-any.whl",
+          "url": "https://files.pythonhosted.org/packages/04/7c/6d46e4f529186472929c4b05d006a39ef14649dcf7c8d5c98eed59a27f1d/flashinfer_python-0.7.2-py3-none-any.whl",
+          "sha256": "770550a0aa92b2f10e6c9a1f048dd43713f0f3bb6a12710186fcf8e4e9c99bd8"
+        }
+      ]
+    }
+  },
+  "kernel_packages": {
+    "flashinfer-cubin": {
+      "version": "0.7.2",
+      "wheels": [
+        {
+          "filename": "flashinfer_cubin-0.7.2-py3-none-any.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_cubin-0.7.2-py3-none-any.whl",
+          "sha256": "31704fa5b2562d459d34c67cee9e80e0abb96c82f89943d542276d5a92c88079"
+        }
+      ],
+      "requires": []
+    },
+    "flashinfer-jit-cache": {
+      "version": "0.7.2+cu130",
+      "wheels": [
+        {
+          "filename": "flashinfer_jit_cache-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "sha256": "157e74a786c84df49c59cf1d7568a531a8833ec47a58e9fd52de52737705cc21"
+        },
+        {
+          "filename": "flashinfer_jit_cache-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "sha256": "9d17680be42818709696dcf8273c9f3f62e42636caf9b3b4a358e443e8216c20"
+        }
+      ],
+      "requires": [
+        "flashinfer-jit-cache-sm100a",
+        "flashinfer-jit-cache-sm103a",
+        "flashinfer-jit-cache-sm120f",
+        "flashinfer-jit-cache-sm80",
+        "flashinfer-jit-cache-sm89",
+        "flashinfer-jit-cache-sm90a"
+      ]
+    },
+    "flashinfer-jit-cache-sm100a": {
+      "version": "0.7.2+cu130",
+      "wheels": [
+        {
+          "filename": "flashinfer_jit_cache_sm100a-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm100a-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "sha256": "1effb8378d702d1d0a2d84a778028a51d2c1da0bb9f939148f82a1a37c26361d"
+        },
+        {
+          "filename": "flashinfer_jit_cache_sm100a-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm100a-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "sha256": "59c41aacab91631a169035348db5899f63e4483b474c39cbec7901d86df49bca"
+        }
+      ],
+      "requires": []
+    },
+    "flashinfer-jit-cache-sm103a": {
+      "version": "0.7.2+cu130",
+      "wheels": [
+        {
+          "filename": "flashinfer_jit_cache_sm103a-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm103a-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "sha256": "bfd154680fcd99b32e85bb00216311ca6cee19594592337d3fb20642c9eacfa1"
+        },
+        {
+          "filename": "flashinfer_jit_cache_sm103a-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm103a-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "sha256": "e05791dcadad995d2582928f2d0fb290fb6741bdc972d297503339cd9d0384e3"
+        }
+      ],
+      "requires": []
+    },
+    "flashinfer-jit-cache-sm120f": {
+      "version": "0.7.2+cu130",
+      "wheels": [
+        {
+          "filename": "flashinfer_jit_cache_sm120f-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm120f-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "sha256": "7c29bb7f35b52767cbbc6dabef5b532805ea4106a66450496192d0b42e942560"
+        },
+        {
+          "filename": "flashinfer_jit_cache_sm120f-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm120f-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "sha256": "e2334f441c993f5c97b027f502214ab763d0e5314ceef325576e993d80a0bfdd"
+        }
+      ],
+      "requires": []
+    },
+    "flashinfer-jit-cache-sm80": {
+      "version": "0.7.2+cu130",
+      "wheels": [
+        {
+          "filename": "flashinfer_jit_cache_sm80-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm80-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "sha256": "433448b1bbcb4fd5c5142776e48165c7b2c2bd63a102ea47976220e6b840053a"
+        },
+        {
+          "filename": "flashinfer_jit_cache_sm80-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm80-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "sha256": "0125b404c6a07ae715af021e9a6ee811584f84950f69a98811b4db1a2531e9aa"
+        }
+      ],
+      "requires": []
+    },
+    "flashinfer-jit-cache-sm89": {
+      "version": "0.7.2+cu130",
+      "wheels": [
+        {
+          "filename": "flashinfer_jit_cache_sm89-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm89-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "sha256": "256376f551cbc2b7a47c2bea48eda3f6770274e706228921edf8c3243e45095e"
+        },
+        {
+          "filename": "flashinfer_jit_cache_sm89-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm89-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "sha256": "2e7fb41f49b8ad0c1a8cd298ecf3cb2f95db4c7cb389b72de2be4b8bfe61f646"
+        }
+      ],
+      "requires": []
+    },
+    "flashinfer-jit-cache-sm90a": {
+      "version": "0.7.2+cu130",
+      "wheels": [
+        {
+          "filename": "flashinfer_jit_cache_sm90a-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm90a-0.7.2+cu130-cp39-abi3-manylinux_2_28_aarch64.whl",
+          "sha256": "03e7eaed9f783b0d2a0fb1d2c30ca37f613c5a717304982747a868e5220fc167"
+        },
+        {
+          "filename": "flashinfer_jit_cache_sm90a-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "url": "https://github.com/flashinfer-ai/flashinfer/releases/download/v0.7.2/flashinfer_jit_cache_sm90a-0.7.2+cu130-cp39-abi3-manylinux_2_28_x86_64.whl",
+          "sha256": "538e4f534c45493eba6783ea825c6d6c1d383c2d751f339ceedb78ed7deffa04"
+        }
+      ],
+      "requires": []
+    }
+  }
+}

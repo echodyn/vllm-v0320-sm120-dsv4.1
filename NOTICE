@@ -1,0 +1,13 @@
+vLLM v0.32.0 SM120 / DeepSeek V4.1 Flash backports
+
+This project contains adapted patches derived from vllm-project/vllm and
+retains their upstream copyright and license notices.
+
+Upstream project: https://github.com/vllm-project/vllm
+Pinned source: 5df63a7203cdb9328d824a27b682e77c7b9928be
+Patch provenance, authorship references and adaptations: BACKPORTS.md and
+patches/manifest.json.
+
+FlashInfer and other dependency wheels are obtained from their respective
+distributors during the image build. They are not bundled in this source
+distribution. Their own licenses and notices continue to apply.

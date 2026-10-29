@@ -1,0 +1,10 @@
+--- a/models/deepseek_v41/common/ops/cache_utils.py
++++ b/models/deepseek_v41/common/ops/cache_utils.py
+@@ -954,6 +954,7 @@
+         )
+     else:
+         combined_indices, combined_lens = out
++        combined_indices.fill_(-1)
+ 
+     _COMBINE_TOPK_SWA_INDICES_KERNEL(
+         combined_indices,

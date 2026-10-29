@@ -1,0 +1,170 @@
+--- a/distributed/parallel_state.py
++++ b/distributed/parallel_state.py
+@@ -1681,7 +1681,7 @@
+ 
+ 
+ @contextmanager
+-def graph_capture(device: torch.device):
++def graph_capture(device: torch.device, stream: torch.cuda.Stream | None = None):
+     """`graph_capture` is a context manager which should surround the code that
+     is capturing the CUDA graph. Its main purpose is to ensure that some
+     operations will be run after the graph is captured, before the graph
+@@ -1694,7 +1694,9 @@
+     in order to explicitly distinguish the kernels to capture
+     from other kernels possibly launched on background in the default stream.
+     """
+-    context = GraphCaptureContext(torch.cuda.Stream(device=device))
++    context = GraphCaptureContext(
++        stream if stream is not None else torch.cuda.Stream(device=device)
++    )
+     with (
+         get_tp_group().graph_capture(context),
+         get_pp_group().graph_capture(context),
+--- a/v1/worker/gpu/model_runner.py
++++ b/v1/worker/gpu/model_runner.py
+@@ -1100,6 +1100,7 @@
+                         self.block_tables,
+                         self.attn_groups,
+                         self.kv_cache_config,
++                        self.cudagraph_manager.capture_stream,
+                     )
+                     if self.speculator is not None:
+                         with use_workspace_lane(self._draft_workspace_lane):
+--- a/v1/worker/gpu/cudagraph_utils.py
++++ b/v1/worker/gpu/cudagraph_utils.py
+@@ -174,6 +174,9 @@
+ 
+         self.graphs: dict[BatchExecutionDescriptor, torch.cuda.CUDAGraph] = {}
+         self.pool = current_platform.get_global_graph_pool() if cudagraph_mode else None
++        # The stream of the last capture; graphs replayed inside these ones (in
++        # their eager breaks) can capture on it to share the pool's free blocks.
++        self.capture_stream: torch.cuda.Stream | None = None
+ 
+         self._graphs_captured = False
+ 
+@@ -420,6 +423,7 @@
+         self,
+         create_forward_fn: CreateForwardFn,
+         progress_bar_desc: str = "Capturing CUDA graphs",
++        stream: torch.cuda.Stream | None = None,
+     ) -> None:
+         """Capture CUDA graphs.
+ 
+@@ -430,9 +434,11 @@
+                 because attention backends may mutate or lazily initialize
+                 metadata during warmup.
+             progress_bar_desc: Description shown on the capture progress bar.
++            stream: Capture on this stream instead of a new one.
+ 
+         """
+-        with graph_capture(device=self.device), ExitStack() as stack:
++        with graph_capture(self.device, stream) as context, ExitStack() as stack:
++            self.capture_stream = context.stream
+             if self.ubatch_runner is not None:
+                 # Join parked threads on failure to avoid blocking later captures.
+                 stack.callback(self.ubatch_runner.abort_pending_run)
+--- a/v1/worker/gpu/model_states/interface.py
++++ b/v1/worker/gpu/model_states/interface.py
+@@ -139,8 +139,10 @@
+         block_tables: BlockTables,
+         attn_groups: list[list[AttentionGroup]],
+         kv_cache_config: KVCacheConfig,
+-    ) -> None:
+-        """Capture the CUDA graphs this state runs inside the model's forward."""
++        stream: torch.cuda.Stream | None = None,
++    ) -> None:
++        """Capture the CUDA graphs this state runs inside the model's forward,
++        on ``stream``: the model graphs' capture stream."""
+         return None
+ 
+     def get_additional_cg_support(self) -> tuple[AttentionCGSupport, str | None]:
+--- a/models/deepseek_v41/decoder_replay_layers.py
++++ b/models/deepseek_v41/decoder_replay_layers.py
+@@ -45,6 +45,8 @@
+     every row. ``metadata_prefixes`` are the attention metadata keys the layers
+     read, so the replay batch builds only those. ``first_swa_prefix`` keys the
+     first replay layer's SWA metadata, built with the batch's window starts.
++    ``has_early_aux`` tells whether layers before the replay layers capture aux
++    hidden states, which the forward holds across the replay layers.
+     """
+ 
+     def __init__(
+@@ -54,12 +56,14 @@
+         write_batch_kv: Callable[..., None],
+         metadata_prefixes: set[str],
+         first_swa_prefix: str,
++        has_early_aux: Callable[[], bool] = lambda: False,
+     ) -> None:
+         self.window = window
+         self.run_layers = run_layers
+         self.write_batch_kv = write_batch_kv
+         self.metadata_prefixes = metadata_prefixes
+         self.first_swa_prefix = first_swa_prefix
++        self.has_early_aux = has_early_aux
+         # Set by the model state every step; None runs the layers on the batch.
+         self.replay_batch: ReplayBatch | None = None
+         # Set by the model state with replay graphs: PIECEWISE model graphs of
+--- a/models/deepseek_v41/nvidia/model_state.py
++++ b/models/deepseek_v41/nvidia/model_state.py
+@@ -559,6 +559,7 @@
+         block_tables: BlockTables,
+         attn_groups: list[list[AttentionGroup]],
+         kv_cache_config: KVCacheConfig,
++        stream: torch.cuda.Stream | None = None,
+     ) -> None:
+         def prepare(desc: BatchExecutionDescriptor) -> None:
+             # Capture reuses the runtime path on a dummy batch, so the graph reads
+@@ -578,7 +579,7 @@
+         if self.replay_cudagraphs is not None:
+             # profile_only captures use pre-KV-cache groups: drop the cache.
+             self._replay_attn_groups = None
+-            self.replay_cudagraphs.capture_replay_graphs(prepare)
++            self.replay_cudagraphs.capture_replay_graphs(prepare, stream)
+ 
+     def _kept_input_batch(
+         self,
+--- a/models/deepseek_v41/nvidia/model.py
++++ b/models/deepseek_v41/nvidia/model.py
+@@ -826,6 +826,7 @@
+                 self.layers[cut].write_kv,
+                 metadata_prefixes,
+                 self.layers[cut].attn.swa_cache_layer.prefix,
++                lambda: any(i < cut for i in self.aux_hidden_state_layers),
+             )
+             logger.info_once(
+                 "Decoder SWA bounded replay: in eager prefill steps, layer %d "
+--- a/models/deepseek_v41/nvidia/decoder_replay_cudagraph.py
++++ b/models/deepseek_v41/nvidia/decoder_replay_cudagraph.py
+@@ -68,9 +68,21 @@
+         ]
+ 
+     def capture_replay_graphs(
+-        self, prepare: Callable[[BatchExecutionDescriptor], None]
++        self,
++        prepare: Callable[[BatchExecutionDescriptor], None],
++        stream: torch.cuda.Stream | None = None,
+     ) -> None:
+-        """Capture each size on the replay batch ``prepare`` sets on the layers."""
++        """Capture each size on the replay batch ``prepare`` sets on the layers.
++
++        On the model graphs' ``stream`` they share its free blocks of the graph
++        pool: a replay graph runs in a model graph's eager break, after it has
++        gathered its inputs into ``input_buffers`` and before the model graph
++        reads its outputs from the break's own buffers, so no model graph
++        tensor in the pool is live while it runs. Aux hidden states captured
++        before the replay layers would be, so with those it keeps its own.
++        """
++        if self.layers.has_early_aux():
++            stream = None
+ 
+         def create_forward_fn(desc: BatchExecutionDescriptor, warmup: bool):
+             prepare(desc)
+@@ -86,7 +98,7 @@
+ 
+             return forward_fn
+ 
+-        self.capture(create_forward_fn, "Capturing decoder replay CUDA graphs")
++        self.capture(create_forward_fn, "Capturing decoder replay CUDA graphs", stream)
+         self.layers.replay_batch = None
+ 
+     def run(self, rows: torch.Tensor, inputs: tuple) -> tuple[torch.Tensor, ...]:

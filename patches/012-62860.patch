@@ -1,0 +1,54 @@
+--- a/model_executor/layers/sparse_attn_indexer.py
++++ b/model_executor/layers/sparse_attn_indexer.py
+@@ -1,6 +1,8 @@
+ # SPDX-License-Identifier: Apache-2.0
+ # SPDX-FileCopyrightText: Copyright contributors to the vLLM project
+ """Custom Sparse Attention Indexer layers."""
++
++import math
+ 
+ import torch
+ import torch.distributed as dist
+@@ -44,6 +46,7 @@
+     has_deep_gemm,
+ )
+ from vllm.utils.import_utils import has_cutedsl
++from vllm.utils.math_utils import round_up
+ from vllm.utils.torch_utils import (
+     LayerNameType,
+     _encode_layer_name,
+@@ -62,6 +65,21 @@
+ 
+ # MXFP4 layout: 2 values packed per byte, ue8m0 (1-byte) scale per block of 32.
+ MXFP4_BLOCK_SIZE = 32
++
++
++def _profile_indexer_logits_bytes(max_model_len, config, prefill_bytes, is_sm100):
++    """Peak logits reservation for the baseline's FP32 DeepGEMM API.
++
++    Later DeepGEMM versions emit BF16 on SM100; do not use that accounting
++    with the unchanged 1e1842a extension in the v0.32.0 image.
++    """
++    rows = 0
++    if config is not None:
++        scheduler = config.scheduler_config
++        rows = min(scheduler.max_num_seqs * (1 + config.num_speculative_tokens),
++                   scheduler.max_num_batched_tokens)
++    row_align = math.lcm(384 if is_sm100 else 256, 1024 // 4)
++    return max(prefill_bytes, rows * round_up(max_model_len, row_align) * 4)
+ 
+ 
+ def _assert_cutedsl_dcp_merge_supported(
+@@ -462,7 +480,11 @@
+ 
+         # The retained DeepGEMM API emits FP32 logits. Reserve the prefill
+         # chunk budget here; the next backport adds the aligned decode peak.
+-        max_logits_bytes = envs.VLLM_SPARSE_INDEXER_MAX_LOGITS_MB * 1024 * 1024
++        max_logits_bytes = _profile_indexer_logits_bytes(
++            max_model_len, get_current_vllm_config_or_none(),
++            envs.VLLM_SPARSE_INDEXER_MAX_LOGITS_MB * 1024 * 1024,
++            current_platform.is_device_capability_family(100),
++        )
+         _ = torch.empty(
+             max_logits_bytes, dtype=torch.uint8, device=hidden_states.device
+         )
